@@ -1,0 +1,12 @@
+access-list 1 deny 192.168.1.0 0.0.0.255
+access-list 1 permit any
+int g0/0
+ip access-group 1 out
+vty 0 15
+access-class 1
+
+ip access-group 102 out
+
+access-list 102 deny tcp host 201.1.2.253 host 192.168.1.1 eq www
+int g0/1
+ip access-group 102 out
