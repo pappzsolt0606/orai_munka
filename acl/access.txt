@@ -19,3 +19,9 @@ permit tcp 192.168.1.0 0.0.0.127 any eq 443
 int g0/0
 ip access-group SURFING in
 ip access-group BROWSING out
+
+ip access-list extended SURFING
+ permit tcp 192.168.1.0 0.0.0.31 any eq www
+ permit tcp 192.168.1.0 0.0.0.31 any eq 443
+ip access-list extended BROWSING
+ permit tcp any 192.168.1.0 0.0.0.31 established
